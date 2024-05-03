@@ -9,6 +9,7 @@
     ];
     
     $length = isset($_GET["length"]) ? intval($_GET["length"]) : 0;
+    $repetition = isset($_GET["repetition"]) ? true : false;
 
     $filterArray = ["minusc"];
 
@@ -18,8 +19,8 @@
 
     if($length !== 0) {
         session_start();
-        $_SESSION["psw"] = createPsw($subChar, $length, $filterArray);
-        header("Location: ./psw.php");
+        $_SESSION["psw"] = createPsw($subChar, $length, $filterArray, $repetition);
+        //header("Location: ./psw.php");
     }
 ?>
 
@@ -46,6 +47,18 @@
                 <div class="col-7">
                     <input type="number" class="form-control" name="length" id="length" min="4" max="15" value="<?= $length ?>" required>
                 </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-5 text-end">
+                    <label class="col-form-label"></label>
+                </div>
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="switch" name="repetition" checked>
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Consentire la ripetizione di caratteri?</label>
+                    </div>
+                </div>
+
             </div>
             <div class="row mb-3">
                 <div class="col-12 text-center">
