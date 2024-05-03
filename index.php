@@ -9,11 +9,19 @@
     ];
     
     $length = isset($_GET["length"]) ? intval($_GET["length"]) : 0;
+    $maiusc = isset($_GET["maiusc"]) ? true : false;
+    $num = isset($_GET["num"]) ?  true : false;
+    $special = isset($_GET["special"]) ?  true : false;
+
+    $filterArray = ["minusc"];
+
+    isset($_GET["maiusc"]) ? $filterArray[] = "maiusc" : null;
+    isset($_GET["num"]) ? $filterArray[] = "num" : null;
+    isset($_GET["special"]) ? $filterArray[] = "special" : null;
 
     if($length !== 0) {
         session_start();
-        $_SESSION["psw"] = createPsw($subChar, $length);
-        var_dump($_SESSION["psw"]);
+        $_SESSION["psw"] = createPsw($subChar, $length, $filterArray);
         header("Location: ./psw.php");
     }
 ?>
@@ -40,6 +48,21 @@
                 </div>
                 <div class="col-7">
                     <input type="number" class="form-control" name="length" id="length" min="4" max="15" value="<?= $length ?>" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12 text-center">
+                    <div class="btn-group" role="group">
+                        <input type="checkbox" class="btn-check" id="btncheck1" name="maiusc" <?= $maiusc ? "checked" : "" ?>>
+                        <label class="btn btn-outline-primary" for="btncheck1">Maiuscole</label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck2" name="num" <?= $num ? "checked" : "" ?>>
+                        <label class="btn btn-outline-primary" for="btncheck2">Numeri</label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck3" name="special" <?= $special ? "checked" : "" ?>>
+                        <label class="btn btn-outline-primary" for="btncheck3">Caratteri Speciali</label>
+                    </div>
+                    <small class="text-body-tertiary d-block">Se non vengono inseriti caratteri aggiuntivi, la password sarà composta solo da lettere minuscole</small>
                 </div>
             </div>
             <div class="row justify-content-center mb-3">
