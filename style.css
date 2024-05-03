@@ -1,3 +1,10 @@
 body.ms-vh{
     height: 100vh;
 }
+
+.censored{
+    background-color: var(--bs-alert-color);
+    &:hover{
+        background-color: transparent;
+    }
+}

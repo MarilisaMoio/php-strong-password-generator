@@ -9,6 +9,13 @@
     ];
     
     $length = isset($_GET["length"]) ? intval($_GET["length"]) : 0;
+
+    if($length !== 0) {
+        session_start();
+        $_SESSION["psw"] = createPsw($subChar, $length);
+        var_dump($_SESSION["psw"]);
+        header("Location: ./psw.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -26,11 +33,6 @@
             <h1>Random Password Generator</h1>
             <h2 class="text-body-secondary">Il generatore di password più sicuro in circolazione</h2>
         </div>
-        <?php if ($length !== 0) {?>
-            <div class="alert alert-info" role="alert">
-                La tua nuova password è <?= createPsw($subChar, $length) ?>
-            </div>
-        <?php } ?>
         <form method="GET" class="bg-secondary-subtle border-secondary p-3 rounded">
             <div class="row mb-3">
                 <div class="col-5 text-end">
