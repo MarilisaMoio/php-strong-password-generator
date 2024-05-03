@@ -20,7 +20,7 @@
     if($length !== 0) {
         session_start();
         $_SESSION["psw"] = createPsw($subChar, $length, $filterArray, $repetition);
-        //header("Location: ./psw.php");
+        header("Location: ./psw.php");
     }
 ?>
 
