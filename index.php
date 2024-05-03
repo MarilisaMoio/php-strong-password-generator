@@ -1,4 +1,6 @@
-<?php 
+<?php
+    require_once __DIR__ . "/functions.php";
+
     $subChar = [
         'minusc' => range("a", "z"),
         'maiusc' => range("A", "Z"),
@@ -7,15 +9,6 @@
     ];
     
     $length = isset($_GET["length"]) ? intval($_GET["length"]) : 0;
-
-    function createPsw($subChar, $length){
-        $pool = array_merge($subChar['minusc'], $subChar['maiusc'], $subChar['num'], $subChar['special']);
-        $generatedPsw = "";
-        for ($i = 1; $i <= $length; $i++){
-            $generatedPsw .= $pool[rand(0, count($pool) - 1)];
-        };
-        return $generatedPsw;
-    };
 ?>
 
 <!DOCTYPE html>
