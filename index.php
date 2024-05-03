@@ -9,9 +9,6 @@
     ];
     
     $length = isset($_GET["length"]) ? intval($_GET["length"]) : 0;
-    $maiusc = isset($_GET["maiusc"]) ? true : false;
-    $num = isset($_GET["num"]) ?  true : false;
-    $special = isset($_GET["special"]) ?  true : false;
 
     $filterArray = ["minusc"];
 
@@ -53,13 +50,13 @@
             <div class="row mb-3">
                 <div class="col-12 text-center">
                     <div class="btn-group" role="group">
-                        <input type="checkbox" class="btn-check" id="btncheck1" name="maiusc" <?= $maiusc ? "checked" : "" ?>>
+                        <input type="checkbox" class="btn-check" id="btncheck1" name="maiusc">
                         <label class="btn btn-outline-primary" for="btncheck1">Maiuscole</label>
 
-                        <input type="checkbox" class="btn-check" id="btncheck2" name="num" <?= $num ? "checked" : "" ?>>
+                        <input type="checkbox" class="btn-check" id="btncheck2" name="num">
                         <label class="btn btn-outline-primary" for="btncheck2">Numeri</label>
 
-                        <input type="checkbox" class="btn-check" id="btncheck3" name="special" <?= $special ? "checked" : "" ?>>
+                        <input type="checkbox" class="btn-check" id="btncheck3" name="special">
                         <label class="btn btn-outline-primary" for="btncheck3">Caratteri Speciali</label>
                     </div>
                     <small class="text-body-tertiary d-block">Se non vengono inseriti caratteri aggiuntivi, la password sarà composta solo da lettere minuscole</small>
